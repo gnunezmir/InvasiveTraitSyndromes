@@ -1,8 +1,6 @@
 # Nunez-Mir et al. — Analysis Code and Data
 
-Code and data underlying "Decoupling the dimensions of plant invasion
-success reveals divergent trait syndromes across invasion outcomes and
-growth forms."
+Code and data underlying "Invasive plants display divergent trait syndromes across invasion outcomes and growth forms."
 
 ## Contents
 
