@@ -1,12 +1,12 @@
-Data and code for "Invasive plants display divergent trait syndromes across invasion outcomes and growth forms"
+# Data and code for "Invasive plants display divergent trait syndromes across invasion outcomes and growth forms"
 
-# Overview
+## Overview
 
 This repository contains the data and R code used to reproduce the analyses presented in the manuscript "Invasive plants display divergent trait syndromes across invasion outcomes and growth forms."
 
 The study evaluates relationships between plant functional and niche traits and three dimensions of invasion success—local abundance, habitat breadth, and invasive range size—across invasive plant species in the United States. The repository includes the compiled trait data, files and code used for phylogenetic trait imputation and phylogeny construction, the final analysis dataset, and code used to reproduce the statistical analyses, Figure 2 and Tables 2—4.
 
-# Project structure
+## Project structure
 
 InvasiveTraitSyndromes/
 ├── Data/
@@ -30,9 +30,9 @@ InvasiveTraitSyndromes/
 ├── README.md
 └── renv.lock
 
-# Workflow and script dependencies
+## Workflow and script dependencies
 
-## 1. Phylogeny construction — `Scripts/CreatePhylogeny.R`
+### 1. Phylogeny construction — `Scripts/CreatePhylogeny.R`
 
 **Inputs:**
 - `Data/PhylogenySpeciesList.csv`
@@ -44,7 +44,7 @@ InvasiveTraitSyndromes/
 
 `CreatePhylogeny.R` generates the phylogenetic tree used for trait imputation and phylogenetic generalized least squares (PGLS) analyses. The phylogeny is generated using the `U.PhyloMaker` R package with `nodes.type = 1` and `scenario = 3`. The megatree and genus-family reference files used by the script were provided with U.PhyloMaker (Jin & Qian, 2023).
 
-## 2. Phylogenetic trait imputation — `Scripts/TraitImputation.R`
+### 2. Phylogenetic trait imputation — `Scripts/TraitImputation.R`
 
 **Inputs:**
 - `Data/TraitImputationInput.csv`
@@ -57,7 +57,7 @@ InvasiveTraitSyndromes/
 
 Following imputation, imputed values falling outside the observed range of the corresponding trait were replaced with missing values (`NA`). The screened imputed trait values were then merged with the remaining traits and variables from the compiled dataset to produce `AnalysisData.csv`.
 
-## 3. Main analyses — `Scripts/MainAnalysis.R`
+### 3. Main analyses — `Scripts/MainAnalysis.R`
 
 **Inputs:**
 - `Data/AnalysisData.csv`
@@ -68,9 +68,9 @@ Following imputation, imputed values falling outside the observed range of the c
 PGLS models are fitted for all species and separately by woody/herbaceous habit, sub-growth forms, and herbaceous lifespan.
 
 
-# File inventory
+## File inventory
 
-## Data files
+### Data files
 
 - **`AnalysisData.csv`** — Final dataset used in `MainAnalysis.R` to reproduce the statistical analyses, Figure 2 and Tables 2—4.
 
@@ -88,7 +88,7 @@ PGLS models are fitted for all species and separately by woody/herbaceous habit,
 
 - **`TraitImputationInput.csv`** — Dataset containing Box Cox transformed trait values from CompiledTraitData.csv supplied to `TraitImputation.R` for phylogenetic trait imputation of missing values.
 
-## R scripts
+### R scripts
 
 - **`CreatePhylogeny.R`** — Generates `AnalysisPhylogeny.tre` from the species list, plant megatree, and genus-family reference file using U.PhyloMaker.
 
@@ -96,7 +96,7 @@ PGLS models are fitted for all species and separately by woody/herbaceous habit,
 
 - **`MainAnalysis.R`** — Reproduces the principal component analyses, PGLS models, Figure 2 and R2 values reported in Tables 2—4 presented in the manuscript.
 
-## R environment and project files
+### R environment and project files
 
 - `renv.lock` — Records the R package versions used for the analyses and can be used with `renv` to restore the project environment.
 
@@ -110,9 +110,9 @@ PGLS models are fitted for all species and separately by woody/herbaceous habit,
 
 - `.gitattributes` — Git configuration file containing repository-specific file attributes.
 
-# File Details
+## File Details
 
-## `PhylogenySpeciesList.csv`
+### `PhylogenySpeciesList.csv`
 
 Species list used as input to U.PhyloMaker to generate the phylogeny used for phylogenetic trait imputation and PGLS analyses. Each row represents one species.
 
@@ -124,7 +124,7 @@ Species list used as input to U.PhyloMaker to generate the phylogeny used for ph
 - `species.relative` — Required U.PhyloMaker input column; left blank for all species.
 - `genus.relative` — Required U.PhyloMaker input column; left blank for all species.
 
-## `PlantGenusList.csv`
+### `PlantGenusList.csv`
 
 Genus-family reference file provided with U.PhyloMaker and used during phylogeny construction (Jin & Qian, 2023). Each row represents one plant genus.
 
@@ -133,7 +133,7 @@ Genus-family reference file provided with U.PhyloMaker and used during phylogeny
 - `genus` — Plant genus.
 - `family` — Plant family.
 
-## `TraitImputationInput.csv`
+### `TraitImputationInput.csv`
 
 Trait dataset used as input to `TraitImputation.R` for phylogenetic trait imputation. Each row represents one species. The dataset contains 930 species of the 961 species in CompiledTraitData.csv and 13 trait variables. Variables ending in `_t` were Box Cox transformed prior to imputation.
 
@@ -155,7 +155,7 @@ Trait dataset used as input to `TraitImputation.R` for phylogenetic trait imputa
 - `monoploid_t` — Transformed monoploid genome size; used as the genome-size predictor in the final statistical models.
 
 
-## `ImputedTraitData.csv`
+### `ImputedTraitData.csv`
 
 Output from `TraitImputation.R` containing transformed trait values following phylogenetic imputation with Rphylopars. Each row represents one species. Observed trait values are retained, while missing values are replaced with phylogenetically estimated values where possible. The dataset contains 930 species of the 961 species in CompiledTraitData.csv.
 
@@ -177,11 +177,11 @@ Output from `TraitImputation.R` containing transformed trait values following ph
 - `holoploid_t` — Holoploid genome size; not used in the final statistical models.
 - `monoploid_t` — Monoploid genome size; used as the genome-size predictor in the final statistical models.
 
-## `CompiledTraitData.csv`
+### `CompiledTraitData.csv`
 
 Compiled species-level dataset assembled for this study from multiple published data sources. Each row represents one invasive plant species. The dataset contains 961 species and includes species identifiers and classifications, invasion-success metrics, introduction history, functional traits, and environmental niche variables. Some variables retained in this compiled dataset were not used in the final statistical analyses.
 
-### Data provenance
+#### Data provenance
 
 The 961 invasive plant species represented in this dataset were identified from EDDMapS (Bargeron & Moorhead, 2007) and from species classified as "Invasive" or "Widespread invasive" in the USGS Register of Introduced and Invasive Species, Version 2.0 (Simpson et al., 2025).
 
@@ -229,7 +229,7 @@ Estimated year of introduction to the United States was compiled from multiple s
 - `TissueTypeDummy` — Numeric/dummy-coded representation of tissue type; not used in the final statistical models.
 - `ResidenceTime` — Residence time in the United States.
 
-## `AnalysisData.csv`
+### `AnalysisData.csv`
 
 Final species-level dataset used as input to `MainAnalysis.R` for the statistical analyses, Figure 2, and Tables 2–4. Each row represents one invasive plant species. The dataset contains 961 species.
 
@@ -273,7 +273,7 @@ This dataset was produced by merging the trait values following phylogenetic imp
 - `TissueTypeDummy` — Numeric/dummy-coded representation of tissue type; not used in the final statistical models.
 - `ResidenceTime` — Residence time in the United States.
 
-# References and data sources
+## References and data sources
 
 Al-Shayeb, S. M., Aguilar, C., Yousefi, M., George, Z., Pfadenhauer, W. G., & Nunez-Mir, G. C. (2026). Invasive Flora Repository: Traits, environmental tolerances, and invasion history of invasive plant species in the United States. Ecology, 107(9), e70492.
 
