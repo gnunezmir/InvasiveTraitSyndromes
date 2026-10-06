@@ -7,7 +7,7 @@ This repository contains the data and R code used to reproduce the analyses pres
 The study evaluates relationships between plant functional and niche traits and three dimensions of invasion success—local abundance, habitat breadth, and invasive range size—across invasive plant species in the United States. The repository includes the compiled trait data, files and code used for phylogenetic trait imputation and phylogeny construction, the final analysis dataset, and code used to reproduce the statistical analyses, Figure 2 and Tables 2—4.
 
 ## Project structure
-
+```
 InvasiveTraitSyndromes/
 ├── Data/
 │   ├── AnalysisData.csv
@@ -29,7 +29,7 @@ InvasiveTraitSyndromes/
 ├── Analyses_MainText_ForReviewers.Rproj
 ├── README.md
 └── renv.lock
-
+```
 ## Workflow and script dependencies
 
 ### 1. Phylogeny construction — `Scripts/CreatePhylogeny.R`
