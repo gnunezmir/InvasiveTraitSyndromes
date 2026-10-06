@@ -63,7 +63,7 @@ Following imputation, imputed values falling outside the observed range of the c
 - `Data/AnalysisData.csv`
 - `Data/AnalysisPhylogeny.tre`
 
-`MainAnalysis.R` reproduces the analyses reported in the manuscript. The script transforms variables as required, constructs the specific environmental tolerance and superior competitive ability trait axes using principal component analysis, fits phylogenetic generalized least squares models, and reproduces Figure 2.
+`MainAnalysis.R` reproduces the analyses reported in the manuscript. The script transforms variables as required, constructs the specific environmental tolerance and superior competitive ability trait axes using principal component analysis, fits phylogenetic generalized least squares models, reproduces Figure 2 and the pseudo-R2 values reported in Tables 2—4.
 
 PGLS models are fitted for all species and separately by woody/herbaceous habit, sub-growth forms, and herbaceous lifespan.
 
@@ -94,7 +94,7 @@ PGLS models are fitted for all species and separately by woody/herbaceous habit,
 
 - **`TraitImputation.R`** — Performs phylogenetic trait imputation using `Rphylopars` and generates `ImputedTraitData.csv`.
 
-- **`MainAnalysis.R`** — Reproduces the principal component analyses, PGLS models, Figure 2 and R2 values reported in Tables 2—4 presented in the manuscript.
+- **`MainAnalysis.R`** — Reproduces the principal component analyses, PGLS models, Figure 2 and pseudo-R2 values reported in Tables 2—4 presented in the manuscript.
 
 ### R environment and project files
 
