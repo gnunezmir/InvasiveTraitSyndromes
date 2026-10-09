@@ -32,6 +32,26 @@ InvasiveTraitSyndromes/
 ```
 ## Workflow and script dependencies
 
+### Reproducing the analyses
+
+All analyses were conducted in R version 4.5.1. Package versions and dependencies are documented in `renv.lock`.
+
+Open `Analyses_MainText_ForReviewers.Rproj` in RStudio and restore the project-specific R environment using:
+
+```r
+renv::restore()
+```
+
+To reproduce the statistical analyses and Figure 2, run:
+
+```r
+source("Scripts/MainAnalysis.R")
+```
+
+The final analysis dataset (`Data/AnalysisData.csv`) and phylogeny (`Data/AnalysisPhylogeny.tre`) are provided, so rerunning phylogeny construction or trait imputation is not required to reproduce the main analyses. The scripts for these preceding steps are included separately to document the data-processing workflow.
+
+All scripts should be run from the project root directory.
+
 ### 1. Phylogeny construction — `Scripts/CreatePhylogeny.R`
 
 **Inputs:**
